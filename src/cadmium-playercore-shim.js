@@ -3,7 +3,7 @@ console.log("Hello, I am running instead of playercore");
 
 var my_config = {
 	"use_VP9": false,
-	"use_5.1": false,
+	"use_5.1": true,
 	"set_max_bitrate": true,
 }
 
@@ -36,10 +36,6 @@ var cadmium_src = request.responseText;
 
 function get_profile_list() {
 	custom_profiles = [
-		"playready-h264mpl30-dash",
-		"playready-h264mpl31-dash",
-		"playready-h264mpl40-dash",
-		
 		"playready-h264hpl30-dash",
 		"playready-h264hpl31-dash",
 		"playready-h264hpl40-dash",
@@ -72,6 +68,12 @@ do_patch(
 	"Hello world",
 	/(.*)/,
 	"console.log('Hello, I am code which has been injected into playercore!'); $1"
+);
+
+do_patch(
+	"MSL logger",
+	/(init:function\(.{15,18}\){var .;.=this;.{1,2}\(.{1,2},function\(\)\{var..{1,2},.{1,2};)/,
+	"$1 if (w.length > 0) { var json_ = JSON.parse(String.fromCharCode.apply(null, w)); console.log(json_);}"
 );
 
 do_patch(
