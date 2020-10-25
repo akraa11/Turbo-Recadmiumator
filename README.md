@@ -21,6 +21,8 @@ It remains to be seen how robust my regexes will be to playercore updates.
 
 - Auto-select stream with max available bitrate.
 
+- Log MSL messages to console.
+
 ## Undocumented Keyboard Shortcuts:
 
 Netflix has a bunch of undocumented keyboard shortcuts, that do useful things. This list may be incomplete.
